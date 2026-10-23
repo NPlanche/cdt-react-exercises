@@ -11,12 +11,13 @@
 
   Use the commented "Explanation" section at the bottom of this lesson's components.
 */
+import { useState } from 'react';
 
 export default function BugProps({ name = 'friend' }) {
-  let message = 'Hello, ' + name;
+  const [message, setMessage] = useState('Hello, ' + name);
 
   function handleChange() {
-    message = 'Hi, ' + name + '!';
+    setMessage('Hi, ' + name + '!');
   }
 
   return (
@@ -28,4 +29,8 @@ export default function BugProps({ name = 'friend' }) {
 }
 
 // Explanation:
-// (Write your explanation here)
+// The bug happens because the message is store in a regular variable.
+// Changing a regular variable does not trigger the react re-render, so it
+//  does not update. To fix this issue, I imported useState and stored the
+// message in a state const then use the setMessage inside the click handler
+// so it updates when the button is clicked
