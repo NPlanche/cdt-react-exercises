@@ -9,12 +9,12 @@
 */
 
 import { useState } from 'react';
+
 export default function BugMutatedState() {
   let [count, setCount] = useState(0);
 
   function handleAdd() {
-    count++;
-    setCount(count);
+    setCount((previousCount) => previousCount + 1);
   }
 
   return (
@@ -26,4 +26,6 @@ export default function BugMutatedState() {
 }
 
 // Explanation:
-// (Write your explanation here)
+// This bug happens because count++ changes the state variable directly
+// instead of using React's setter function. To fix it, i use the setter
+//  function which calculates the new value from the previous state.
