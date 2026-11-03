@@ -6,7 +6,8 @@ export default function BugEventPropagation() {
     alert("RED BOX CLICKED ❌ Don't show me!");
   }
 
-  function handleInnerClick() {
+  function handleInnerClick(event) {
+    event.stopPropagation();
     alert('Button Clicked ✅');
   }
 
@@ -22,3 +23,7 @@ export default function BugEventPropagation() {
     </>
   );
 }
+
+//Clicking the button triggers both alersts
+//event.stopPropagation() stops it from triggering the outer div.
+//while clicking  red box only trigger the outer alert.
